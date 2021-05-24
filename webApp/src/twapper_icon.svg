@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?> <!-- Created with Vectornator for iOS (http://vectornator.io/) --><!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg height="100%" style="fill-rule:nonzero;clip-rule:evenodd;stroke-linecap:round;stroke-linejoin:round;" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg" xml:space="preserve" width="100%" xmlns="http://vectornator.io" version="1.1" viewBox="0 0 1024 1024">
+<metadata>
+<setting key="DimensionsVisible" value="1"/>
+<setting key="PencilOnly" value="0"/>
+<setting key="SnapToPoints" value="0"/>
+<setting key="OutlineMode" value="0"/>
+<setting key="CMYKEnabledKey" value="0"/>
+<setting key="RulersVisible" value="1"/>
+<setting key="SnapToEdges" value="0"/>
+<setting key="GuidesVisible" value="1"/>
+<setting key="DisplayWhiteBackground" value="0"/>
+<setting key="doHistoryDisabled" value="0"/>
+<setting key="SnapToGuides" value="0"/>
+<setting key="TimeLapseWatermarkDisabled" value="0"/>
+<setting key="Units" value="Pixels"/>
+<setting key="DynamicGuides" value="1"/>
+<setting key="IsolateActiveLayer" value="0"/>
+<setting key="SnapToGrid" value="0"/>
+</metadata>
+<defs>
+<linearGradient y1="934" id="LinearGradient" x1="200.478" y2="934" x2="859.067" gradientUnits="userSpaceOnUse" gradientTransform="matrix(1.55484 0 0 1.51484 -311.712 -902.864)">
+<stop stop-color="#ddf4d1" offset="0.144839"/>
+<stop stop-color="#0db335" offset="0.965422"/>
+</linearGradient>
+</defs>
+<g id="Layer 1" layerName="Layer 1">
+<path shadowColor="#000000" shadowOpacity="0.333" shadowRadius="10.8429" d="M0+256.996C0+256.996+240.088+427.721+321.367+431.308C391.947+434.423+411.259+355.499+513.411+353.456C605.115+351.622+647.268+437.448+711.643+430.546C795.709+421.533+1024+256+1024+256L700.392+768L512.572+484.815L316.418+767.779" shadowOffset="14.2829" fill="url(#LinearGradient)" opacity="1" shadowAngle="1.57024"/>
+</g>
+</svg>
