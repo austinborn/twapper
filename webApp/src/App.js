@@ -1,6 +1,14 @@
 import * as React from 'react'
 import { useMemo, useState } from 'react'
 
+// import { Decimal } from 'decimal.js'
+import {
+  Decimal
+} from 'decimal.js'
+
+import { isEmpty } from 'lodash'
+
+
 import clsx from 'clsx'
 import text from './App.text'
 import AppBar from './AppBar'
@@ -49,6 +57,9 @@ const useStyles = makeStyles((theme) => ({
   },
   textField: {
     margin: '0rem 0.2rem',
+    "& .MuiInputBase-input": {
+      textAlign: 'right'
+    }
   },
   twapAlgorithmForm: {
     // backgroundColor: theme.palette.background.paper,
@@ -74,7 +85,17 @@ const timeUnitOptions = [
   { label: 'Day(s)', value: 'day' }
 ]
 
+const NUMBER_REGEX = /^[0-9]*\.?[0-9]*$/
+
 const mapSelectOption = o => <option value={o.value}>{o.label}</option>
+
+const cleanNumberInput = (number, setter) => () => {
+  if (isEmpty(number)) return
+  const decimal = new Decimal(number)
+  setter(decimal.toString())
+}
+
+const handleChangeNumber = setter => event => String(event.target.value).match?.(NUMBER_REGEX) && setter(event.target.value)
 
 function App() {
   const classes = useStyles()
@@ -101,7 +122,13 @@ function App() {
             <Typography style={{textAlign: 'center'}}>{text.twapTitle}</Typography>
             <div className={clsx(classes.rowDiv)}>
               <Typography className={clsx(classes.inLineText)}>{text.iWantToBuy}</Typography>
-              <TextField className={clsx(classes.textField)} placeholder={text.quantity} value={quantity} onChange={event => setQuantity(event.target.value)}/>
+              <TextField
+                className={clsx(classes.textField)}
+                onBlur={cleanNumberInput(quantity, setQuantity)}
+                onChange={handleChangeNumber(setQuantity)}
+                placeholder={text.quantity}
+                value={quantity}
+              />
               <Select
                 className={clsx(classes.select)}
                 native
@@ -124,10 +151,22 @@ function App() {
             </div>
             <div className={clsx(classes.rowDiv)}>
               <Typography className={clsx(classes.inLineText)}>{text.in}</Typography>
-              <TextField className={clsx(classes.textField)} placeholder={text.intervals} value={intervals} onChange={event => setIntervals(event.target.value)}/>
+              <TextField
+                className={clsx(classes.textField)}
+                onBlur={cleanNumberInput(intervals, setIntervals)}
+                onChange={handleChangeNumber(setIntervals)}
+                placeholder={text.intervals}
+                value={intervals}
+              />
               <Typography className={clsx(classes.inLineText)}>{text.intervals}</Typography>
               <Typography className={clsx(classes.inLineText)}>{text.over}</Typography>
-              <TextField className={clsx(classes.textField)} placeholder={text.time} value={timePeriod} onChange={event => setTimePeriod(event.target.value)}/>
+              <TextField
+                className={clsx(classes.textField)}
+                onBlur={cleanNumberInput(timePeriod, setTimePeriod)}
+                onChange={handleChangeNumber(setTimePeriod)}
+                placeholder={text.time}
+                value={timePeriod}
+              />
               <Select
                 className={clsx(classes.select)}
                 native
@@ -144,7 +183,14 @@ function App() {
                 onChange={event => setLimitPriceFlag(event.target.checked)}
               />
               <Typography className={clsx(classes.inLineText, !limitPriceFlag && classes.disableText)}>{text.payingAtMost}</Typography>
-              <TextField className={clsx(classes.textField)} disabled={!limitPriceFlag} placeholder={text.limitPrice} value={limitPrice} onChange={event => setLimitPrice(event.target.value)}/>
+              <TextField
+                className={clsx(classes.textField)}
+                disabled={!limitPriceFlag}
+                onBlur={cleanNumberInput(limitPrice, setLimitPrice)}
+                onChange={handleChangeNumber(setLimitPrice)}
+                placeholder={text.limitPrice}
+                value={limitPrice}
+              />
               <Typography className={clsx(classes.inLineText, !limitPriceFlag && classes.disableText)}>{`${token1Label} ${text.per} ${token0Label}`}</Typography>
             </div>
             <div className={clsx(classes.buttonDiv)}>
